@@ -11,6 +11,11 @@ export class AppComponent {
   // lista soba
   rooms: Room[];
 
+  isRoomsVisible: boolean = true;
+  isOfferVisible: boolean = false;
+  isRecommendationVisible: boolean = false;
+  isAboutUsVisible: boolean = false;
+  
   constructor() {
     this.rooms = [
       { roomNumber: 101, floor: 1, person: 2 },
@@ -19,13 +24,30 @@ export class AppComponent {
     ];
   }
 
-  // event handler click eventa dugmeta na formi
-  addRoom(roomNumber: HTMLInputElement, floor: HTMLInputElement, person: HTMLInputElement) : boolean {
-    // ubacuju se brojčane vrednosti. nije rađena validacija u ovom primeru
-    this.rooms.push(new Room(parseInt(roomNumber.value), parseInt(floor.value), parseInt(person.value)));
-    roomNumber.value = '';
-    floor.value = '';
-    person.value = '';
-    return false;
+  onRooms() {
+    this.hideAll();
+    this.isRoomsVisible = true;
+  }
+
+  onOffer() {
+    this.hideAll();
+    this.isOfferVisible = true;
+  }
+
+  onRecommendation() {
+    this.hideAll();
+    this.isRecommendationVisible = true;
+  }
+
+  onAboutUs() {
+    this.hideAll();
+    this.isAboutUsVisible = true;
+  }
+
+  hideAll() {
+    this.isRoomsVisible = false;
+    this.isOfferVisible = false;
+    this.isRecommendationVisible = false;
+    this.isAboutUsVisible = false;
   }
 }
