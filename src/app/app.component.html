@@ -26,4 +26,7 @@
 
   <div class="ui main text container">
     <app-roomscomponent [class.hidden] = '!isRoomsVisible' [rooms]="rooms"></app-roomscomponent>
+    <app-offercomponent [class.hidden] = '!isOfferVisible' [offers]="offers"></app-offercomponent>
+    <app-recommendationcomponent [class.hidden] = '!isRecommendationVisible' [recommendations] = 'recommendations'></app-recommendationcomponent>
+    <app-aboutus [class.hidden] = '!isAboutUsVisible' ></app-aboutus>
   </div>

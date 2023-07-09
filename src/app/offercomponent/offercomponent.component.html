@@ -1,0 +1,31 @@
+<h1>Ponude</h1>
+
+<div class="ui grid posts">
+    <div *ngFor="let offer of offers" class="row">
+        <div class="twelve wide column center aligned room-number">
+            <div class="ui statistic">
+              <div class="label">
+                Ponuda:
+              </div>
+              <div class="value">
+                <!-- prikaz polja roomNumber -->
+                {{ offer.title }}
+              </div>
+            </div>
+          </div>
+          <div class="four wide column">
+            <div class="ui statistic">
+              <div class="label">
+                Cena:
+              </div>
+              <div class="value">
+                {{ offer.price }}
+              </div>
+            </div>
+          
+          </div>
+    </div>
+  </div>
+
+<!-- SemanticUI klase vezane za kolone i custom klasa room-number -->
+  
