@@ -38,3 +38,6 @@ form.form:after {
   display: flex;
 }
 
+.hidden {
+  display: none !important;
+}
