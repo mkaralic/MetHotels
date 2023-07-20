@@ -1,22 +1,39 @@
 <!-- Korišćene su klase iz semantic ui za polja na formi -->
-<form class="ui large form segment">
+<form #f="ngForm" (submit)="addRoom(roomNumber, floor, person)" class="ui large form segment">
     <h3 class="ui header">Add a Link</h3>
   
-    <div class="field">
+    <div class="field" [class.error]="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
       <label for="roomNumber">Room number:</label>
-      <input name="roomNumber" id="roomNumber" #newRoomNumber type="number" min="101" max="310"> <!-- promenjeno -->
+      <input name="roomNumber" id="roomNumber" #roomNumber="ngModel" ngModel type="number" min="101" max="310" required (keyup)="log($event)"> <!-- promenjeno -->
+      <div class="error" *ngIf="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
+        <div *ngIf="roomNumber.errors?.['required']">Room number is required</div>
+        <div *ngIf="roomNumber.errors?.['min']">Room number must be >= {{roomNumber.errors?.['min'].min}}</div>
+        <div *ngIf="roomNumber.errors?.['max']">Room number must be &lt;= {{roomNumber.errors?.['max'].max}}</div>
+      </div>
     </div>
-    <div class="field">
+    <div class="field" [class.error]="floor.invalid && (floor.touched || floor.dirty)">
       <label for="floor">Floor:</label>
-      <input name="floor" id="floor" #newFloor type="number" min="1" max="3"> <!-- promenjeno -->
+      <input name="floor" id="floor" #floor="ngModel" ngModel type="number" min="1" max="3" required> <!-- promenjeno -->
+      <div class="error" *ngIf="floor.invalid && (floor.touched || floor.dirty)">
+        <div *ngIf="floor.errors?.['required']">Floor is required</div>
+        <div *ngIf="floor.errors?.['min']">Floor must be >= {{floor.errors?.['min'].min}}</div>
+        <div *ngIf="floor.errors?.['max']">Floor must be &lt;= {{floor.errors?.['max'].max}}</div>
+      </div>
     </div>
-    <div class="field">
+    <div class="field" [class.error]="person.invalid && (person.touched || person.dirty)">
       <label for="person">Person:</label>
-      <input name="person" id="person" #newPerson type="number" min="1" max="5"> <!-- promenjeno -->
+      <input name="person" id="person" #person="ngModel" ngModel type="number" min="1" max="5" required> <!-- promenjeno -->
+      <div class="error" *ngIf="person.invalid && (person.touched || person.dirty)">
+        <div *ngIf="person.errors?.['required']">Person is required</div>
+        <div *ngIf="person.errors?.['min']">Person must be >= {{person.errors?.['min'].min}}</div>
+        <div *ngIf="person.errors?.['max']">Person must be &lt;= {{person.errors?.['max'].max}}</div>
+      </div>
     </div> 
   
+    
+
     <!-- dugme prosleđuje metodi parametre  newRoomNumber, newFloor, newPerson -->
-    <button (click)="addRoom(newRoomNumber, newFloor, newPerson)" class="ui positive right floated button">
+    <button type="submit" class="ui positive right floated button" [disabled]="f.invalid">
       Submit
     </button>
   
