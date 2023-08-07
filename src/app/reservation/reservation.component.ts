@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Reservation } from './reservation.model';
 import { RoomServiceService } from '../services/room-service.service';
+import { Room } from '../room/room.model';
 
 @Component({
   selector: 'app-reservation',
@@ -10,6 +11,7 @@ import { RoomServiceService } from '../services/room-service.service';
 })
 export class ReservationComponent {
   @Input() reservations: Reservation[];
+  @Input() rooms: Room[];
 
   constructor(private roomService: RoomServiceService) {}
 

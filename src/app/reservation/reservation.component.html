@@ -4,11 +4,11 @@
   
     <div class="field" [class.error]="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
       <label for="roomNumber">Room number:</label>
-      <input name="roomNumber" id="roomNumber" #roomNumber="ngModel" ngModel type="number" min="101" max="310" required> <!-- promenjeno -->
+      <select class="ui search dropdown"  name="roomNumber" id="roomNumber" #roomNumber="ngModel" ngModel type="number">
+        <option *ngFor="let room of rooms" [value]="room.roomNumber">{{ room.roomNumber }}</option>
+      </select>
       <div class="error" *ngIf="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
         <div *ngIf="roomNumber.errors?.['required']">Room number is required</div>
-        <div *ngIf="roomNumber.errors?.['min']">Room number must be >= {{roomNumber.errors?.['min'].min}}</div>
-        <div *ngIf="roomNumber.errors?.['max']">Room number must be &lt;= {{roomNumber.errors?.['max'].max}}</div>
       </div>
     </div>
     <div class="field" [class.error]="numberOfNights.invalid && (numberOfNights.touched || numberOfNights.dirty)">

@@ -29,7 +29,7 @@
 
   <div class="ui main text container">
     <app-roomscomponent [hidden] = '!isRoomsVisible' [rooms]="rooms"></app-roomscomponent>
-    <app-reservation [hidden] = '!isReservationVisible' [reservations]="reservations"></app-reservation>
+    <app-reservation [hidden] = '!isReservationVisible' [reservations]="reservations" [rooms]="rooms"></app-reservation>
     <app-offercomponent [hidden] = '!isOfferVisible' [offers]="offers"></app-offercomponent>
     <app-recommendationcomponent [hidden] = '!isRecommendationVisible' [recommendations] = 'recommendations'></app-recommendationcomponent>
     <app-aboutus [hidden] = '!isAboutUsVisible' ></app-aboutus>
