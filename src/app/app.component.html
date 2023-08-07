@@ -12,6 +12,9 @@
       <a class="item" [class.active] = "isRoomsVisible" (click)="onRooms()">
         Sobe
       </a>
+      <a class="item" [class.active] = "isReservationVisible" (click)="onReservation()">
+        Rezervacija
+      </a>
       <a class="item" [class.active] = "isOfferVisible" (click)="onOffer()">
         Ponuda
       </a>
@@ -26,6 +29,7 @@
 
   <div class="ui main text container">
     <app-roomscomponent [hidden] = '!isRoomsVisible' [rooms]="rooms"></app-roomscomponent>
+    <app-reservation [hidden] = '!isReservationVisible' [reservations]="reservations"></app-reservation>
     <app-offercomponent [hidden] = '!isOfferVisible' [offers]="offers"></app-offercomponent>
     <app-recommendationcomponent [hidden] = '!isRecommendationVisible' [recommendations] = 'recommendations'></app-recommendationcomponent>
     <app-aboutus [hidden] = '!isAboutUsVisible' ></app-aboutus>

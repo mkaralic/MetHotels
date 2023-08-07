@@ -10,6 +10,8 @@ import { RoomscomponentComponent } from './roomscomponent/roomscomponent.compone
 import { OffercomponentComponent } from './offercomponent/offercomponent.component';
 import { RecommendationcomponentComponent } from './recommendationcomponent/recommendationcomponent.component';
 import { AboutusComponent } from './aboutus/aboutus.component'; 
+import { RoomServiceService } from './services/room-service.service';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     RoomscomponentComponent,
     OffercomponentComponent,
     RecommendationcomponentComponent,
-    AboutusComponent
+    AboutusComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ RoomServiceService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

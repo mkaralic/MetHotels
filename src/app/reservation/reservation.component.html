@@ -1,0 +1,49 @@
+<!-- Korišćene su klase iz semantic ui za polja na formi -->
+<form #f="ngForm" (submit)="addReservation(roomNumber, numberOfNights)" class="ui large form segment">
+    <h3 class="ui header">Add a Link</h3>
+  
+    <div class="field" [class.error]="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
+      <label for="roomNumber">Room number:</label>
+      <input name="roomNumber" id="roomNumber" #roomNumber="ngModel" ngModel type="number" min="101" max="310" required> <!-- promenjeno -->
+      <div class="error" *ngIf="roomNumber.invalid && (roomNumber.touched || roomNumber.dirty)">
+        <div *ngIf="roomNumber.errors?.['required']">Room number is required</div>
+        <div *ngIf="roomNumber.errors?.['min']">Room number must be >= {{roomNumber.errors?.['min'].min}}</div>
+        <div *ngIf="roomNumber.errors?.['max']">Room number must be &lt;= {{roomNumber.errors?.['max'].max}}</div>
+      </div>
+    </div>
+    <div class="field" [class.error]="numberOfNights.invalid && (numberOfNights.touched || numberOfNights.dirty)">
+      <label for="numberOfNights">Number of nights:</label>
+      <input name="numberOfNights" id="numberOfNights" #numberOfNights="ngModel" ngModel type="number" min="1" max="30" required> <!-- promenjeno -->
+      <div class="error" *ngIf="numberOfNights.invalid && (numberOfNights.touched || numberOfNights.dirty)">
+        <div *ngIf="numberOfNights.errors?.['required']">Number of nights is required</div>
+        <div *ngIf="numberOfNights.errors?.['min']">Number of nights must be >= {{numberOfNights.errors?.['min'].min}}</div>
+        <div *ngIf="numberOfNights.errors?.['max']">Number of nights must be &lt;= {{numberOfNights.errors?.['max'].max}}</div>
+      </div>
+    </div> 
+  
+    <!-- dugme prosleđuje metodi parametre  newRoomNumber, newFloor, newPerson -->
+    <button type="submit" class="ui positive right floated button" [disabled]="f.invalid">
+      Submit
+    </button>
+  
+  </form>
+  
+  <!-- Kontejner komponente app-room, kojoj se prosleđuju elementi array-a rooms iz app-component -->
+  <div class="ui grid posts">
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Room number</th><th>Number of nights</th><th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+            <td>{{ reservation.room }}</td>
+            <td>{{ reservation.nights }}</td>
+            <td>{{ reservation.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- kraj dodavanja ovde -->
+  

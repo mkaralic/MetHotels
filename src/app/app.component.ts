@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Room } from './room/room.model'; // priključuje se model da bi mogao da se koristi u klasi
 import { Offer } from './offercomponent/offer.model';
 import { Recommendation } from './recommendationcomponent/recommendation.model';
+import { Reservation } from './reservation/reservation.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,10 +12,12 @@ export class AppComponent {
   title = 'MetHotels';
   // lista soba
   rooms: Room[];
+  reservations: Reservation[];
   offers: Offer[];
   recommendations: Recommendation[];
 
-  isRoomsVisible: boolean = true;
+  isRoomsVisible: boolean = false;
+  isReservationVisible: boolean = true;
   isOfferVisible: boolean = false;
   isRecommendationVisible: boolean = false;
   isAboutUsVisible: boolean = false;
@@ -35,11 +38,17 @@ export class AppComponent {
       { name: 'Nocenje sa doruckom', price: 5600.00 },
       { name: 'Polupansion', price: 6400.00 },
     ];
+    this.reservations = [];
   }
 
   onRooms() {
     this.hideAll();
     this.isRoomsVisible = true;
+  }
+
+  onReservation() {
+    this.hideAll();
+    this.isReservationVisible = true;
   }
 
   onOffer() {
@@ -59,6 +68,7 @@ export class AppComponent {
 
   hideAll() {
     this.isRoomsVisible = false;
+    this.isReservationVisible = false;
     this.isOfferVisible = false;
     this.isRecommendationVisible = false;
     this.isAboutUsVisible = false;
