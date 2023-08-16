@@ -68,11 +68,11 @@
     <table class="ui celled table">
       <thead>
         <tr>
-          <th>Room number</th><th>Room floor</th><th>Person</th>
+          <th>Room number</th><th>Room floor</th><th>Person</th><th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr app-room *ngFor="let room of rooms" [room]="room">
+        <tr app-room *ngFor="let room of rooms" [room]="room" (delete)="deleteRoom($event)">
         </tr>
       </tbody>
     </table>

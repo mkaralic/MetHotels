@@ -3,6 +3,7 @@ import { Room } from './room/room.model'; // priključuje se model da bi mogao d
 import { Offer } from './offercomponent/offer.model';
 import { Recommendation } from './recommendationcomponent/recommendation.model';
 import { Reservation } from './reservation/reservation.model';
+import { MetHotelsApiService } from './services/met-hotels-api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,12 +23,13 @@ export class AppComponent {
   isRecommendationVisible: boolean = false;
   isAboutUsVisible: boolean = false;
   
-  constructor() {
-    this.rooms = [
-      { roomNumber: 101, floor: 1, person: 2 },
-      { roomNumber: 102, floor: 1, person: 2 },
-      { roomNumber: 103, floor: 1, person: 3 }
-    ];
+  constructor(private api: MetHotelsApiService) {
+    this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+    // this.rooms = [
+    //   { roomNumber: 101, floor: 1, person: 2 },
+    //   { roomNumber: 102, floor: 1, person: 2 },
+    //   { roomNumber: 103, floor: 1, person: 3 }
+    // ];
     this.offers = [
       { title: 'Nocenje', price: 4800.00 },
       { title: 'Dorucak', price: 600.00 },

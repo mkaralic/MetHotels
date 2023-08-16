@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Room } from './room.model';
 
 @Component({
@@ -9,4 +9,9 @@ import { Room } from './room.model';
 export class RoomComponent {
   // referenca za uvoz vrednosti iz roditeljskog podatka
   @Input() room: Room;
+  @Output() delete: EventEmitter<number> = new EventEmitter();
+
+  deleteRoom(id: number) {
+    this.delete.emit(id);
+  }
 }
