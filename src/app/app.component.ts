@@ -42,37 +42,4 @@ export class AppComponent {
     ];
     this.reservations = [];
   }
-
-  onRooms() {
-    this.hideAll();
-    this.isRoomsVisible = true;
-  }
-
-  onReservation() {
-    this.hideAll();
-    this.isReservationVisible = true;
-  }
-
-  onOffer() {
-    this.hideAll();
-    this.isOfferVisible = true;
-  }
-
-  onRecommendation() {
-    this.hideAll();
-    this.isRecommendationVisible = true;
-  }
-
-  onAboutUs() {
-    this.hideAll();
-    this.isAboutUsVisible = true;
-  }
-
-  hideAll() {
-    this.isRoomsVisible = false;
-    this.isReservationVisible = false;
-    this.isOfferVisible = false;
-    this.isRecommendationVisible = false;
-    this.isAboutUsVisible = false;
-  }
 }

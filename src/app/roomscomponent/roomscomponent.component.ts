@@ -12,8 +12,9 @@ export class RoomscomponentComponent {
   @Input() rooms: Room[];
   visible: boolean = true;
 
-  constructor(private api: MetHotelsApiService) {}
-
+  constructor(private api: MetHotelsApiService) {
+    this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+  }
   // event handler click eventa dugmeta na formi
   // addRoom(roomNumber: HTMLInputElement, floor: HTMLInputElement, person: HTMLInputElement) : boolean {
   addRoom(roomNumber: NgModel, floor: any, person: any): boolean {

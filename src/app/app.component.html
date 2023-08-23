@@ -9,28 +9,24 @@
       </div>
     </div>
     <div class="right menu">
-      <a class="item" [class.active] = "isRoomsVisible" (click)="onRooms()">
+      <a class="item" [routerLink]="['/rooms']" routerLinkActive="active">
         Sobe
       </a>
-      <a class="item" [class.active] = "isReservationVisible" (click)="onReservation()">
+      <a class="item" [routerLink]="['/reservations']" routerLinkActive="active">
         Rezervacija
       </a>
-      <a class="item" [class.active] = "isOfferVisible" (click)="onOffer()">
+      <a class="item" [routerLink]="['/offer']" routerLinkActive="active">
         Ponuda
       </a>
-      <a class="item" [class.active] = "isRecommendationVisible" (click)="onRecommendation()">
+      <a class="item" [routerLink]="['/recommendation']" routerLinkActive="active">
         Preporuka
       </a>
-      <a class="item" [class.active] = "isAboutUsVisible" (click)="onAboutUs()">
+      <a class="item" [routerLink]="['/about']" routerLinkActive="active">
         O nama
       </a>
     </div>
   </div>
 
   <div class="ui main text container">
-    <app-roomscomponent [hidden] = '!isRoomsVisible' [rooms]="rooms"></app-roomscomponent>
-    <app-reservation [hidden] = '!isReservationVisible' [reservations]="reservations" [rooms]="rooms"></app-reservation>
-    <app-offercomponent [hidden] = '!isOfferVisible' [offers]="offers"></app-offercomponent>
-    <app-recommendationcomponent [hidden] = '!isRecommendationVisible' [recommendations] = 'recommendations'></app-recommendationcomponent>
-    <app-aboutus [hidden] = '!isAboutUsVisible' ></app-aboutus>
+    <router-outlet></router-outlet>
   </div>

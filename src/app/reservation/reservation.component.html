@@ -33,7 +33,7 @@
     <table class="ui celled table">
       <thead>
         <tr>
-          <th>Room number</th><th>Number of nights</th><th>Amount</th>
+          <th>Room number</th><th>Number of nights</th><th>Amount</th><th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +41,10 @@
             <td>{{ reservation.room }}</td>
             <td>{{ reservation.nights }}</td>
             <td>{{ reservation.amount }}</td>
+            <td>
+              <button type="button" (click)="deleteReservation(reservation.id)">X</button>
+            </td>
+          
         </tr>
       </tbody>
     </table>

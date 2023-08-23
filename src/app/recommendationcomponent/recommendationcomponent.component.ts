@@ -8,4 +8,11 @@ import { Recommendation } from './recommendation.model';
 })
 export class RecommendationcomponentComponent {
   @Input() recommendations: Recommendation[];
+
+  constructor() {
+    this.recommendations = [
+      { name: 'Nocenje sa doruckom', price: 5600.00 },
+      { name: 'Polupansion', price: 6400.00 },
+    ];
+  }
 }
