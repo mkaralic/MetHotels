@@ -1,22 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/room/room.model';
 import { FormGroup, FormControl, FormBuilder, NgModel } from '@angular/forms';
 import { MetHotelsApiService } from '../services/met-hotels-api.service';
+import { Subject } from 'rxjs';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-roomscomponent',
   templateUrl: './roomscomponent.component.html',
   styleUrls: ['./roomscomponent.component.css'],
 })
-export class RoomscomponentComponent {
+export class RoomscomponentComponent implements OnInit {
   @Input() rooms: Room[];
   visible: boolean = true;
 
+  roomsObserver: Subject<Room[]> = new Subject<Room[]>;
+
   constructor(private api: MetHotelsApiService) {
-    this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+    this.roomsObserver.subscribe({
+      next: (rooms) => this.rooms = rooms
+    })
+  }
+
+  ngOnInit(): void {
+    // this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+    this.api.getRooms().subscribe((rooms) => this.roomsObserver.next(rooms));
   }
   // event handler click eventa dugmeta na formi
-  // addRoom(roomNumber: HTMLInputElement, floor: HTMLInputElement, person: HTMLInputElement) : boolean {
   addRoom(roomNumber: NgModel, floor: any, person: any): boolean {
     // ubacuju se brojčane vrednosti. nije rađena validacija u ovom primeru
     let newRoom = new Room(
@@ -25,13 +35,6 @@ export class RoomscomponentComponent {
       parseInt(person.value)
     );
     this.api.addRoom(newRoom).subscribe((room) => this.rooms.push(room));
-    // this.rooms.push(
-    //   new Room(
-    //     parseInt(roomNumber.value),
-    //     parseInt(floor.value),
-    //     parseInt(person.value)
-    //   )
-    // );
     roomNumber.control.reset();
     floor.control.reset();
     person.control.reset();

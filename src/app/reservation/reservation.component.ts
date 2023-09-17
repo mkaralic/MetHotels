@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Reservation } from './reservation.model';
 import { RoomServiceService } from '../services/room-service.service';
@@ -10,11 +10,14 @@ import { MetHotelsApiService } from '../services/met-hotels-api.service';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css'],
 })
-export class ReservationComponent {
+export class ReservationComponent implements OnInit {
   @Input() reservations: Reservation[];
   @Input() rooms: Room[];
 
   constructor(private roomService: RoomServiceService, private api: MetHotelsApiService) {
+  }
+  
+  ngOnInit() {
     this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
     this.api.getReservations().subscribe((reservations) => this.reservations = reservations);
   }
@@ -31,5 +34,4 @@ export class ReservationComponent {
     let selectedReservation = this.reservations.findIndex((reservation) => reservation.id == id);
     this.api.deleteReservation(id).subscribe(() => this.reservations.splice(selectedReservation, 1));
   }
-
 }
