@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   isAboutUsVisible: boolean = false;
   
   constructor(private api: MetHotelsApiService) {
-    this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+    // this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
     this.api.getReservations().subscribe((reservations) => this.reservations = reservations);
     this.offers = [
       { title: 'Nocenje', price: 4800.00 },

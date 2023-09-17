@@ -15,10 +15,13 @@ export class ReservationComponent implements OnInit {
   @Input() rooms: Room[];
 
   constructor(private roomService: RoomServiceService, private api: MetHotelsApiService) {
+    api.roomsObservable.subscribe({
+      next: (rooms) => this.rooms = rooms
+    })
   }
   
   ngOnInit() {
-    this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
+    this.api.getRooms();
     this.api.getReservations().subscribe((reservations) => this.reservations = reservations);
   }
 

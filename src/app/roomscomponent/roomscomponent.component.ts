@@ -17,14 +17,14 @@ export class RoomscomponentComponent implements OnInit {
   roomsObserver: Subject<Room[]> = new Subject<Room[]>;
 
   constructor(private api: MetHotelsApiService) {
-    this.roomsObserver.subscribe({
+    api.roomsObservable.subscribe({
       next: (rooms) => this.rooms = rooms
     })
   }
 
   ngOnInit(): void {
     // this.api.getRooms().subscribe((rooms) => this.rooms = rooms);
-    this.api.getRooms().subscribe((rooms) => this.roomsObserver.next(rooms));
+    this.api.getRooms();
   }
   // event handler click eventa dugmeta na formi
   addRoom(roomNumber: NgModel, floor: any, person: any): boolean {
