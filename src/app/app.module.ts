@@ -15,6 +15,9 @@ import { RoomServiceService } from './services/room-service.service';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MetHotelsApiService } from './services/met-hotels-api.service';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,9 @@ import { MetHotelsApiService } from './services/met-hotels-api.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(),
+    EffectsModule.forRoot([])
   ],
   providers: [ 
     RoomServiceService,

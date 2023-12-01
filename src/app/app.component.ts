@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from './room/room.model'; // priključuje se model da bi mogao da se koristi u klasi
+import { Room } from './interfaces/room'; // priključuje se model da bi mogao da se koristi u klasi
 import { Offer } from './offercomponent/offer.model';
 import { Recommendation } from './recommendationcomponent/recommendation.model';
-import { Reservation } from './reservation/reservation.model';
+import { Reservation } from './interfaces/reservation';
 import { MetHotelsApiService } from './services/met-hotels-api.service';
 import { Observable, Subject } from 'rxjs';
 @Component({

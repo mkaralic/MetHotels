@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Room } from 'src/app/room/room.model';
+import { Room } from 'src/app/interfaces/room';
 import { FormGroup, FormControl, FormBuilder, NgModel } from '@angular/forms';
 import { MetHotelsApiService } from '../services/met-hotels-api.service';
 import { Subject } from 'rxjs';

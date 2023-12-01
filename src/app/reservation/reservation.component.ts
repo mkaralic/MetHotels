@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { Reservation } from './reservation.model';
+import { Reservation } from '../interfaces/reservation';
 import { RoomServiceService } from '../services/room-service.service';
-import { Room } from '../room/room.model';
+import { Room } from '../interfaces/room';
 import { MetHotelsApiService } from '../services/met-hotels-api.service';
 
 @Component({
